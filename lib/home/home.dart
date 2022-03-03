@@ -24,6 +24,73 @@ class _HomePageState extends State<HomePage> {
     audioPlugin.play("http://stream.zeno.fm/x4qesqszkwzuv");
   }
 
+  void _modalBottomSheetMenuSendTo() {
+    showModalBottomSheet(
+        context: context,
+        builder: (builder) {
+          return Container(
+              color: Color(0xFF737373),
+              //so you don't have to change MaterialApp canvasColor
+              child: new Container(
+                  decoration: new BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(15.0),
+                          topRight: const Radius.circular(15.0))),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Request through",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: "Product Sans",
+                            fontSize: 17,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        ListTile(
+                          title: Text("Email"),
+                          subtitle:
+                              Text("Make a prayer request through email."),
+                          onTap: () {
+                            Navigator.pop(context);
+                            prayerRequest();
+                          },
+                        ),
+                        Divider(),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        ListTile(
+                          title: Text("SMS"),
+                          subtitle: Text("Make a prayer request through sms."),
+                          onTap: () {
+                            Navigator.pop(context);
+                            prayerRequestSMS();
+                          },
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    ),
+                  )));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +115,8 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   "EXIT",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
                     color: Colors.red,
                   ),
                 ),
@@ -219,6 +286,28 @@ class _HomePageState extends State<HomePage> {
                                 CupertinoPageRoute(
                                     builder: (context) => AboutUs()))),
                       ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: _modalBottomSheetMenuSendTo,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(width: 2, color: Colors.red)),
+                        height: 70,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset(
+                            'assets/images/prayer.jpeg',
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fitWidth,
+                            scale: 3,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],

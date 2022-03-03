@@ -133,6 +133,15 @@ class SupportUs extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  child: Image.asset(
+                    'assets/images/remit.jpeg',
+                    scale: 2,
+                  ),
+                ),
               )
             ],
           ),

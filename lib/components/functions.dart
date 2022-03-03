@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -30,6 +31,37 @@ whatsapplaunch(url) async {
     print("Not supported");
   }
 }
+
+prayerRequest() async {
+  final Uri emailLaunchUri = Uri(
+    scheme: 'mailto',
+    path: 'sogobim@gmail.com',
+    query: jsonEncode({'subject': 'Prayer Request'}),
+  );
+  if (await canLaunch(emailLaunchUri.toString())) {
+    await launch(emailLaunchUri.toString());
+  } else {
+    throw 'Could not Email';
+  }
+}
+
+prayerRequestSMS() async {
+  // Android
+  const uri = 'sms:+233208357999';
+  if (await canLaunch(uri)) {
+    await launch(uri);
+  } else {
+    // iOS
+    const uri = 'sms:+233208357999';
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      throw 'Could not launch $uri';
+    }
+  }
+}
+
+// 233208357999
 
 youtubelaunchURL() async {
   if (Platform.isIOS) {
@@ -69,4 +101,3 @@ launchURLMap() async {
     throw 'Could not launch $encodedURl';
   }
 }
-
