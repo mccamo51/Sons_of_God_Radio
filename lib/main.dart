@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sons_radio/components/tessst.dart';
 import 'package:sons_radio/splashScreen.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -11,10 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: SplashScreen());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: SplashScreen(),
+      // home: SourcesTab(),
+    );
   }
 }

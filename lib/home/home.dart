@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:audioplayer/audioplayer.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sons_radio/components/colors.dart';
@@ -15,13 +15,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  AudioPlayer audioPlugin = AudioPlayer();
+  final audioPlugin = AudioPlayer();
   bool isPlaying = true;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    audioPlugin.play("http://stream.zeno.fm/x4qesqszkwzuv");
+    setSource(UrlSource(AudioURL));
+  }
+
+  Future<void> setSource(Source source) async {
+    await audioPlugin.play(source);
+
+    print('Completed setting source.');
   }
 
   void _modalBottomSheetMenuSendTo() {
@@ -208,8 +214,7 @@ class _HomePageState extends State<HomePage> {
                           if (!isPlaying) {
                             audioPlugin.pause();
                           } else {
-                            audioPlugin
-                                .play("http://stream.zeno.fm/x4qesqszkwzuv");
+                            setSource(UrlSource(AudioURL));
                           }
                         },
                       ),
@@ -294,17 +299,20 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Container(
                         width: double.infinity,
+                        // padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             border: Border.all(width: 2, color: Colors.red)),
-                        height: 70,
+                        height: 90,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
                             'assets/images/prayer.jpeg',
                             width: MediaQuery.of(context).size.width,
-                            fit: BoxFit.fitWidth,
-                            scale: 3,
+                            fit: BoxFit.fill,
+                            // height: 20,
+                            // fit: BoxFit.fitWidth,
+                            // scale: ,
                           ),
                         ),
                       ),
