@@ -5,4 +5,5 @@ const ABOUTTEXT =
 const ABOUT2 =
     "The Head Pastor of the Ministry is PS. Stephen Kofi Nyamekye and He is supported and Mentored by Pastor and Lady Pastor James and Barbara Swatt of the United State of America and a host of other anointed men and women of God from different parts of the continent.";
 
-const AudioURL = "https://www.audiocheck.net/Audio/audiocheck.net_frequencychecklow.ogg";
+const AudioURL = "http://stream.zeno.fm/x4qesqszkwzuv";
+// const AudioURL = "https://www.audiocheck.net/Audio/audiocheck.net_frequencychecklow.ogg";
